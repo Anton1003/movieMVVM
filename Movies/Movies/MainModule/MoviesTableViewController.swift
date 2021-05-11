@@ -9,7 +9,7 @@ import UIKit
 ///
 final class MoviesTableViewController: UITableViewController {
     private var movies: [Result] = []
-    
+
     weak var coordinator: MainCoordinator?
 
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ final class MoviesTableViewController: UITableViewController {
         cell.prepareCell(movie: movies[indexPath.row])
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         coordinator?.showDetail()
     }

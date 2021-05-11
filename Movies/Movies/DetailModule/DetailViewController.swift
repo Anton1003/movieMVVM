@@ -16,23 +16,23 @@ final class DetailViewController: UIViewController {
     @IBOutlet var summaryTextView: UITextView!
 
     var movie: Result!
-    
+
     weak var coordinator: MainCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let imageURL = URL(string: "https://image.tmdb.org/t/p/w500\(movie.posterPath)") else { return }
-        DispatchQueue.global().async { [weak self] in
-            if let dataImage = try? Data(contentsOf: imageURL) {
-                DispatchQueue.main.async {
-                    self?.bigPosterImageView.image = UIImage(data: dataImage)
-                }
-            }
-        }
-        titleLabel.text = movie.title
-        ratingLabel.text = "\(movie.popularity)"
-        summaryTextView.text = movie.overview
-        categoriesLabel.text = "\(movie.voteAverage)"
-        durationLabel.text = movie.releaseDate
+//        guard let imageURL = URL(string: "https://image.tmdb.org/t/p/w500\(movie.posterPath)") else { return }
+//        DispatchQueue.global().async { [weak self] in
+//            if let dataImage = try? Data(contentsOf: imageURL) {
+//                DispatchQueue.main.async {
+//                    self?.bigPosterImageView.image = UIImage(data: dataImage)
+//                }
+//            }
+//        }
+//        titleLabel.text = movie.title
+//        ratingLabel.text = "\(movie.popularity)"
+//        summaryTextView.text = movie.overview
+//        categoriesLabel.text = "\(movie.voteAverage)"
+//        durationLabel.text = movie.releaseDate
     }
 }

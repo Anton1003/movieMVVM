@@ -15,7 +15,7 @@
 		CE98F72825F94C17008044B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE98F72625F94C17008044B4 /* LaunchScreen.storyboard */; };
 		CE98F73B25F954C9008044B4 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98F73A25F954C9008044B4 /* MovieDetailViewController.swift */; };
 		CE98F74325FA7793008044B4 /* MoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98F74225FA7793008044B4 /* MoviesTableViewController.swift */; };
-		CE98F74825FA784F008044B4 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98F74725FA784F008044B4 /* Movie.swift */; };
+		CE98F74825FA784F008044B4 /* MoviesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98F74725FA784F008044B4 /* MoviesModel.swift */; };
 		CE98F74D25FA78CE008044B4 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98F74C25FA78CE008044B4 /* Loader.swift */; };
 		CE98F75225FA798F008044B4 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98F75125FA798F008044B4 /* MovieTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -31,7 +31,7 @@
 		CE98F72925F94C17008044B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE98F73A25F954C9008044B4 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		CE98F74225FA7793008044B4 /* MoviesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewController.swift; sourceTree = "<group>"; };
-		CE98F74725FA784F008044B4 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		CE98F74725FA784F008044B4 /* MoviesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
 		CE98F74C25FA78CE008044B4 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		CE98F75125FA798F008044B4 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,6 +50,7 @@
 		CE56A1FD264ADA2500B73D84 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
+				CE98F74725FA784F008044B4 /* MoviesModel.swift */,
 				CE98F72125F94C10008044B4 /* Main.storyboard */,
 				CE98F74225FA7793008044B4 /* MoviesTableViewController.swift */,
 				CE98F75125FA798F008044B4 /* MovieTableViewCell.swift */,
@@ -64,6 +65,14 @@
 				CE98F73A25F954C9008044B4 /* MovieDetailViewController.swift */,
 			);
 			path = DetailModule;
+			sourceTree = "<group>";
+		};
+		CE56A205264ADBC300B73D84 /* ServiceLayer */ = {
+			isa = PBXGroup;
+			children = (
+				CE98F74C25FA78CE008044B4 /* Loader.swift */,
+			);
+			path = ServiceLayer;
 			sourceTree = "<group>";
 		};
 		CE98F70F25F94C10008044B4 = {
@@ -89,8 +98,7 @@
 				CE98F71D25F94C10008044B4 /* SceneDelegate.swift */,
 				CE56A1FD264ADA2500B73D84 /* MainModule */,
 				CE56A1FE264ADA3800B73D84 /* DetailModule */,
-				CE98F74725FA784F008044B4 /* Movie.swift */,
-				CE98F74C25FA78CE008044B4 /* Loader.swift */,
+				CE56A205264ADBC300B73D84 /* ServiceLayer */,
 				CE98F72425F94C17008044B4 /* Assets.xcassets */,
 				CE98F72625F94C17008044B4 /* LaunchScreen.storyboard */,
 				CE98F72925F94C17008044B4 /* Info.plist */,
@@ -214,7 +222,7 @@
 				CE98F74D25FA78CE008044B4 /* Loader.swift in Sources */,
 				CE98F71C25F94C10008044B4 /* AppDelegate.swift in Sources */,
 				CE98F71E25F94C10008044B4 /* SceneDelegate.swift in Sources */,
-				CE98F74825FA784F008044B4 /* Movie.swift in Sources */,
+				CE98F74825FA784F008044B4 /* MoviesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

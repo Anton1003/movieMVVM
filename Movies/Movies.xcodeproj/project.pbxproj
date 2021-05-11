@@ -45,6 +45,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE56A1FD264ADA2500B73D84 /* MainModule */ = {
+			isa = PBXGroup;
+			children = (
+				CE98F74225FA7793008044B4 /* MoviesTableViewController.swift */,
+				CE98F75125FA798F008044B4 /* MovieTableViewCell.swift */,
+			);
+			path = MainModule;
+			sourceTree = "<group>";
+		};
+		CE56A1FE264ADA3800B73D84 /* DetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				CE98F73A25F954C9008044B4 /* MovieDetailViewController.swift */,
+			);
+			path = DetailModule;
+			sourceTree = "<group>";
+		};
 		CE98F70F25F94C10008044B4 = {
 			isa = PBXGroup;
 			children = (
@@ -67,9 +84,8 @@
 				CE98F71B25F94C10008044B4 /* AppDelegate.swift */,
 				CE98F71D25F94C10008044B4 /* SceneDelegate.swift */,
 				CE98F72125F94C10008044B4 /* Main.storyboard */,
-				CE98F74225FA7793008044B4 /* MoviesTableViewController.swift */,
-				CE98F75125FA798F008044B4 /* MovieTableViewCell.swift */,
-				CE98F73A25F954C9008044B4 /* MovieDetailViewController.swift */,
+				CE56A1FD264ADA2500B73D84 /* MainModule */,
+				CE56A1FE264ADA3800B73D84 /* DetailModule */,
 				CE98F74725FA784F008044B4 /* Movie.swift */,
 				CE98F74C25FA78CE008044B4 /* Loader.swift */,
 				CE98F72425F94C17008044B4 /* Assets.xcassets */,

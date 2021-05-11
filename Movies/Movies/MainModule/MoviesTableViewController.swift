@@ -10,6 +10,8 @@ import UIKit
 final class MoviesTableViewController: UITableViewController {
     private var movies: [Result] = []
 
+    weak var coordinator: MainCoordinator?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         Loader().loadWMovies { moviesArray in
@@ -18,13 +20,13 @@ final class MoviesTableViewController: UITableViewController {
         }
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
-        if let vcMVD = segue.destination as? MovieDetailViewController {
-            guard let row = tableView.indexPathForSelectedRow?.row else { return }
-            let movie = movies[row]
-            vcMVD.movie = movie
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
+//        if let vcMVD = segue.destination as? DetailViewController {
+//            guard let row = tableView.indexPathForSelectedRow?.row else { return }
+//            let movie = movies[row]
+//            vcMVD.movie = movie
+//        }
+//    }
 
     // MARK: - Table view data source
 
@@ -44,5 +46,9 @@ final class MoviesTableViewController: UITableViewController {
         else { return UITableViewCell() }
         cell.prepareCell(movie: movies[indexPath.row])
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        coordinator?.showDetail()
     }
 }

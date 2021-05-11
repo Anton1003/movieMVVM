@@ -7,7 +7,7 @@
 
 import UIKit
 ///
-final class MovieDetailViewController: UIViewController {
+final class DetailViewController: UIViewController {
     @IBOutlet var bigPosterImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var categoriesLabel: UILabel!
@@ -16,6 +16,8 @@ final class MovieDetailViewController: UIViewController {
     @IBOutlet var summaryTextView: UITextView!
 
     var movie: Result!
+    
+    weak var coordinator: MainCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()

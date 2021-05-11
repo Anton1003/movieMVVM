@@ -7,8 +7,7 @@
 
 import UIKit
 
-class MainCoordinator: Coordinator {
-    var childCoordinators = [Coordinator]()
+final class MainCoordinator: Coordinator {
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -16,19 +15,13 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = MainViewController.instantiate()
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(MoviesTableViewController.self)
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: false)
     }
     
-    func buySubscription() {
-        let vc = BuyViewController.instantiate()
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
-    }
-    
-    func createAccount() {
-        let vc = CreateAccountViewController.instantiate()
+    func showDetail() {
+        let vc = UIStoryboard(name: "Detail", bundle: nil).instantiateViewController(DetailViewController.self)
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }

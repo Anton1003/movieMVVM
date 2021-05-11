@@ -7,18 +7,32 @@
 
 import UIKit
 
-protocol Storyboarded {
-    static func instantiate() -> Self
+protocol StoriboardIdentifiable {
+    static var storyboardIdentifier: String { get }
 }
 
-extension Storyboarded where Self: UIViewController {
-    static func instantiate() -> Self {
-        let fullName = NSStringFromClass(self)
-        
-        let className = fullName.components(separatedBy: ".")[1]
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: className) as! Self
-        
-        return storyboard
+extension UIViewController: StoriboardIdentifiable {}
+
+extension StoriboardIdentifiable where Self: UIViewController {
+    static var storyboardIdentifier: String {
+        String(describing: self)
+    }
+}
+
+extension UIStoryboard {
+    func instantiateViewController<T: UIViewController>(_: T.Type) -> T {
+        guard let viewController = instantiateViewController(withIdentifier: T.storyboardIdentifier) as? T
+        else {
+            fatalError("View controller с идентификатором \(T.storyboardIdentifier) не найден")
+        }
+        return viewController
+    }
+
+    func instantiateViewController<T: UIViewController>() -> T {
+        guard let viewController = instantiateViewController(withIdentifier: T.storyboardIdentifier) as? T
+        else {
+            fatalError("View controller с идентификатором \(T.storyboardIdentifier) не найден")
+        }
+        return viewController
     }
 }

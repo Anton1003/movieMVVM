@@ -14,7 +14,7 @@ final class MoviesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Loader().loadWMovies { moviesArray in
+        NetworkingService().loadMovies { moviesArray in
             self.movies = moviesArray.results
             self.tableView.reloadData()
         }

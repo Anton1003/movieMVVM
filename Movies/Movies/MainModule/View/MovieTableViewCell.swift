@@ -24,7 +24,7 @@ final class MovieTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func prepareCell(movie: Result) {
+    func prepareCell(movie: Movies) {
         titleLabel.text = movie.title
         summaryLabel.text = movie.releaseDate
         ratingLabel.text = "\(movie.popularity)"

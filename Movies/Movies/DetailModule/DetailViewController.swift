@@ -15,7 +15,7 @@ final class DetailViewController: UIViewController {
     @IBOutlet var ratingLabel: UILabel!
     @IBOutlet var summaryTextView: UITextView!
 
-    var movie: Result!
+    var movie: Movies!
 
     weak var coordinator: MainCoordinator?
 

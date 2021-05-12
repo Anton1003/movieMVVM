@@ -17,7 +17,7 @@ final class DetailViewController: UIViewController {
 
     var movie: Movies!
 
-    weak var coordinator: MainCoordinator?
+//    weak var coordinator: MainCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -5,14 +5,12 @@
 //  Created by User on 11.03.2021.
 //
 
-import CoreData
 import UIKit
 ///
 final class MoviesTableViewController: UITableViewController {
     private var movies: [Movies] = []
 
-    weak var coordinator: MainCoordinator?
-    private var coreDataManager = CoreDataManager()
+    var viewModel: MoviesViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,19 +20,7 @@ final class MoviesTableViewController: UITableViewController {
         }
     }
 
-//    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
-//        if let vcMVD = segue.destination as? DetailViewController {
-//            guard let row = tableView.indexPathForSelectedRow?.row else { return }
-//            let movie = movies[row]
-//            vcMVD.movie = movie
-//        }
-//    }
-
     // MARK: - Table view data source
-
-    override func numberOfSections(in _: UITableView) -> Int {
-        1
-    }
 
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         movies.count
@@ -51,6 +37,15 @@ final class MoviesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.showDetail()
+//        coordinator?.showDetail()
+    }
+}
+
+extension MoviesTableViewController {
+    static func instantiate() -> MoviesTableViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        let controller = storyboard
+            .instantiateViewController(withIdentifier: "MoviesTableViewController") as? MoviesTableViewController
+        return controller ?? MoviesTableViewController()
     }
 }

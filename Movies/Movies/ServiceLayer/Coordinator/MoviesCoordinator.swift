@@ -16,7 +16,16 @@ final class MoviesCoordinator: Coordinator {
     }
 
     func start() {
-        let moviesTableViewController = MoviesTableViewController.instantiate()
+        let moviesTableViewController: MoviesTableViewController = .instantiate()
+        let moviesViewModel = MoviesViewModel()
+        moviesViewModel.coordinator = self
+        moviesTableViewController.viewModel = moviesViewModel
         navigationController.setViewControllers([moviesTableViewController], animated: false)
+    }
+
+    func showDetail() {
+        let detailCoordinator = DetailCoordinator(navigationController: navigationController)
+        childCoordinators.append(detailCoordinator)
+        detailCoordinator.start()
     }
 }

@@ -8,5 +8,9 @@
 import Foundation
 
 final class MoviesViewModel {
-    func showDetail() {}
+    var coordinator: MoviesCoordinator?
+
+    func showDetail() {
+        coordinator?.showDetail()
+    }
 }

@@ -37,15 +37,6 @@ final class MoviesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        coordinator?.showDetail()
-    }
-}
-
-extension MoviesTableViewController {
-    static func instantiate() -> MoviesTableViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: .main)
-        let controller = storyboard
-            .instantiateViewController(withIdentifier: "MoviesTableViewController") as? MoviesTableViewController
-        return controller ?? MoviesTableViewController()
+        viewModel.showDetail()
     }
 }

@@ -16,7 +16,11 @@ final class DetailCoordinator: Coordinator {
     }
 
     func start() {
-        let detailController: DetailViewController = .instantiate()
+        let detailController = UIStoryboard(name: "Detail", bundle: nil)
+            .instantiateViewController(DetailViewController.self)
+        let detailViewModel = DetailViewModel()
+        detailController.viewModel = detailViewModel
+        navigationController.pushViewController(detailController, animated: true)
         // create event
     }
 }

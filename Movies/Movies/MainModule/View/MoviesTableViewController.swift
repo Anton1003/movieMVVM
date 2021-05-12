@@ -5,12 +5,14 @@
 //  Created by User on 11.03.2021.
 //
 
+import CoreData
 import UIKit
 ///
 final class MoviesTableViewController: UITableViewController {
-    private var movies: [Result] = []
+    private var movies: [Movies] = []
 
     weak var coordinator: MainCoordinator?
+    private var coreDataManager = CoreDataManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +20,16 @@ final class MoviesTableViewController: UITableViewController {
             self.movies = moviesArray.results
             self.tableView.reloadData()
         }
+
+//        coreDataManager.saveMovies(
+//            id: 1,
+//            title: "Test",
+//            popularity: 0.1,
+//            posterPath: "some path",
+//            releaseDate: "01.01.01",
+//            voteAverage: 0.2
+//        )
+//        print(coreDataManager.fetchMovies())
     }
 
 //    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {

@@ -20,16 +20,6 @@ final class MoviesTableViewController: UITableViewController {
             self.movies = moviesArray.results
             self.tableView.reloadData()
         }
-
-//        coreDataManager.saveMovies(
-//            id: 1,
-//            title: "Test",
-//            popularity: 0.1,
-//            posterPath: "some path",
-//            releaseDate: "01.01.01",
-//            voteAverage: 0.2
-//        )
-//        print(coreDataManager.fetchMovies())
     }
 
 //    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {

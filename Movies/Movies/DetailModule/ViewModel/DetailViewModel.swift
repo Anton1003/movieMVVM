@@ -7,4 +7,6 @@
 
 import Foundation
 
-final class DetailViewModel {}
+final class DetailViewModel {
+    var coordinator: DetailCoordinator?
+}

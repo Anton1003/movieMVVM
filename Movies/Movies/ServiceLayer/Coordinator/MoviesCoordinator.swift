@@ -18,7 +18,7 @@ final class MoviesCoordinator: Coordinator {
     func start() {
         let moviesTableViewController = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(MoviesTableViewController.self)
-        let moviesViewModel = MoviesViewModel()
+        let moviesViewModel = MoviesTableViewModel()
         moviesViewModel.coordinator = self
         moviesTableViewController.viewModel = moviesViewModel
         navigationController.setViewControllers([moviesTableViewController], animated: false)

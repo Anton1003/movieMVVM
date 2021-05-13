@@ -19,8 +19,8 @@ final class DetailCoordinator: Coordinator {
         let detailController = UIStoryboard(name: "Detail", bundle: nil)
             .instantiateViewController(DetailViewController.self)
         let detailViewModel = DetailViewModel()
+        detailViewModel.coordinator = self
         detailController.viewModel = detailViewModel
         navigationController.pushViewController(detailController, animated: true)
-        // create event
     }
 }

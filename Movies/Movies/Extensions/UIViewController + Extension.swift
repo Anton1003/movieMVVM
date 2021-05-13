@@ -7,17 +7,6 @@
 
 import UIKit
 
-extension UIViewController {
-    static func instantiate<T>() -> T {
-        let storyboard = UIStoryboard(name: "Main", bundle: .main)
-        guard let controller = storyboard.instantiateViewController(withIdentifier: "\(T.self)") as? T
-        else {
-            fatalError("View controller с идентификатором \(T.self) не найден")
-        }
-        return controller
-    }
-}
-
 protocol StoriboardIdentifiable {
     static var storyboardIdentifier: String { get }
 }

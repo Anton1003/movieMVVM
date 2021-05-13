@@ -15,7 +15,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         self.window = window
-        appCoordinator = AppCoordinator(window: window)
+        let networkService = NetworkingService()
+        let photoLoader = PhotoLoader()
+        let coreDataManager = CoreDataManager()
+        let navigationController = UINavigationController()
+        let moduleBuilder = ModuleBuilder(
+            networkService: networkService,
+            photoLoader: photoLoader,
+            coreDataManager: coreDataManager,
+            navigationController: navigationController
+        )
+        appCoordinator = moduleBuilder.createAppCoordinator(window: window)
         appCoordinator?.start()
     }
 }

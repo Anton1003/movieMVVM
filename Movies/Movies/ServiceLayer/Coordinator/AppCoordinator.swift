@@ -14,17 +14,18 @@ protocol Coordinator: AnyObject {
 
 final class AppCoordinator: Coordinator {
     private(set) var childCoordinators: [Coordinator] = []
-
+    private var moduleBuilder: ModuleBuilder
+    private var navigationController: UINavigationController
     private let window: UIWindow
 
-    init(window: UIWindow) {
+    init(window: UIWindow, navigationController: UINavigationController, builder: ModuleBuilder) {
         self.window = window
+        self.navigationController = navigationController
+        moduleBuilder = builder
     }
 
     func start() {
-        let navigationController = UINavigationController()
-
-        let moviesCoordinator = MoviesCoordinator(navigationController: navigationController)
+        let moviesCoordinator = moduleBuilder.createMoviesCoordinator(coordinator: self)
         childCoordinators.append(moviesCoordinator)
         moviesCoordinator.start()
         window.rootViewController = navigationController

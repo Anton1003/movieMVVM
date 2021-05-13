@@ -10,17 +10,20 @@ import UIKit
 final class DetailCoordinator: Coordinator {
     private(set) var childCoordinators: [Coordinator] = []
     private let navigationController: UINavigationController
+    private var moduleBulder: ModuleBuilder
+    private var detailViewController: DetailViewController?
+    private var detailViewModel: DetailViewModel?
 
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, builder: ModuleBuilder) {
         self.navigationController = navigationController
+        moduleBulder = builder
     }
 
     func start() {
-        let detailController = UIStoryboard(name: "Detail", bundle: nil)
-            .instantiateViewController(DetailViewController.self)
-        let detailViewModel = DetailViewModel()
-        detailViewModel.coordinator = self
-        detailController.viewModel = detailViewModel
-        navigationController.pushViewController(detailController, animated: true)
+        detailViewModel = moduleBulder.createDetailViewModel(coordinator: self)
+        guard let detailViewModel = detailViewModel else { return }
+        detailViewController = moduleBulder.createDetailViewController(coordinator: self, viewModel: detailViewModel)
+        guard let detailViewController = detailViewController else { return }
+        navigationController.pushViewController(detailViewController, animated: true)
     }
 }

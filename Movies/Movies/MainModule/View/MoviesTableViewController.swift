@@ -5,52 +5,42 @@
 //  Created by User on 11.03.2021.
 //
 
-import CoreData
 import UIKit
 ///
 final class MoviesTableViewController: UITableViewController {
-    private var movies: [Movies] = []
-
-    weak var coordinator: MainCoordinator?
-    private var coreDataManager = CoreDataManager()
+    var viewModel: MoviesTableViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NetworkingService().loadMovies { moviesArray in
-            self.movies = moviesArray.results
-            self.tableView.reloadData()
+        viewModel.onUpdate = { [weak self] in
+            self?.tableView.reloadData()
         }
+        viewModel.viewLoader()
     }
-
-//    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
-//        if let vcMVD = segue.destination as? DetailViewController {
-//            guard let row = tableView.indexPathForSelectedRow?.row else { return }
-//            let movie = movies[row]
-//            vcMVD.movie = movie
-//        }
-//    }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in _: UITableView) -> Int {
-        1
-    }
-
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        movies.count
+        viewModel.numberOfRous()
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "movieCell",
-            for: indexPath
-        ) as? MovieTableViewCell
-        else { return UITableViewCell() }
-        cell.prepareCell(movie: movies[indexPath.row])
-        return cell
+        let cellViewModel = viewModel.cell(for: indexPath)
+        switch cellViewModel {
+        case let .moviesCell(moviesCellViewModel):
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "movieCell",
+                for: indexPath
+            ) as? MovieTableCell
+            else { return UITableViewCell() }
+            cell.update(with: moviesCellViewModel)
+            return cell
+        }
     }
 
+    // MARK: - Table view delegate
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.showDetail()
+        viewModel.showDetail()
     }
 }

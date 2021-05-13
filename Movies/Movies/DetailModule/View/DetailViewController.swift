@@ -8,7 +8,7 @@
 import UIKit
 ///
 final class DetailViewController: UIViewController {
-    @IBOutlet var bigPosterImageView: UIImageView!
+    @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var categoriesLabel: UILabel!
     @IBOutlet var durationLabel: UILabel!
@@ -17,7 +17,7 @@ final class DetailViewController: UIViewController {
 
     var movie: Movies!
 
-    weak var coordinator: MainCoordinator?
+    var viewModel: DetailViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,3 +36,24 @@ final class DetailViewController: UIViewController {
 //        durationLabel.text = movie.releaseDate
     }
 }
+
+extension DetailViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        1
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        guard let cell = collectionView
+            .dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as? ImageCollectionCell
+        else { return UICollectionViewCell() }
+//        if let photo = presenter?.imageArray[indexPath.row] {
+//            cell.setImage(photo)
+//        }
+        return cell
+    }
+}
+
+extension DetailViewController: UICollectionViewDelegate {}

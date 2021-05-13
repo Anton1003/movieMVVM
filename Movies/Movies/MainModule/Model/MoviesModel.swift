@@ -25,7 +25,6 @@ import Foundation
 
 ///
 struct Film: Codable {
-    let id: Int
     let results: [Movies]
 }
 

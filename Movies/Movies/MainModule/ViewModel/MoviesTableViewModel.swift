@@ -12,8 +12,10 @@ final class MoviesTableViewModel {
         case moviesCell(MoviesCellViewModel)
     }
 
+    var onUpdate: () -> () = {}
     var coordinator: MoviesCoordinator?
     var networkingService: NetworkingService?
+    var title = "Movies"
 
     private(set) var cells: [MoviesTableViewModel.Cell] = []
 
@@ -35,6 +37,7 @@ final class MoviesTableViewModel {
                 )
                 self.cells.append(.moviesCell(cell))
             }
+            self.onUpdate()
         }
     }
 

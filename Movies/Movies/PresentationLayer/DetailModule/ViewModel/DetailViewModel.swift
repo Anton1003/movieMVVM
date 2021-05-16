@@ -10,9 +10,9 @@ import Foundation
 final class DetailViewModel {
     private var coordinator: DetailCoordinator?
     private var networkingService: NetworkingService?
-    private let photoLoader: PhotoLoader
+    private let photoLoader: PhotoService
 
-    init(coordinator: DetailCoordinator, networkingService: NetworkingService, photoLoader: PhotoLoader) {
+    init(coordinator: DetailCoordinator, networkingService: NetworkingService, photoLoader: PhotoService) {
         self.coordinator = coordinator
         self.networkingService = networkingService
         self.photoLoader = photoLoader

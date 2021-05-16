@@ -7,7 +7,7 @@
 
 import CoreData
 
-final class CoreDataManager {
+final class CoreDataService {
     lazy var persistentContainer: NSPersistentContainer = {
         let persistentContainer = NSPersistentContainer(name: "MoviesModel")
         persistentContainer.loadPersistentStores { _, error in

@@ -23,22 +23,22 @@ protocol BuilderProtocol {
 
     init(
         networkService: NetworkingService,
-        photoLoader: PhotoLoader,
-        coreDataManager: CoreDataManager,
+        photoLoader: PhotoService,
+        coreDataManager: CoreDataService,
         navigationController: UINavigationController
     )
 }
 
 final class ModuleBuilder: BuilderProtocol {
     private let networkService: NetworkingService
-    private let photoLoader: PhotoLoader
-    private let coreDataManager: CoreDataManager
+    private let photoLoader: PhotoService
+    private let coreDataManager: CoreDataService
     private var navigationController: UINavigationController
 
     init(
         networkService: NetworkingService,
-        photoLoader: PhotoLoader,
-        coreDataManager: CoreDataManager,
+        photoLoader: PhotoService,
+        coreDataManager: CoreDataService,
         navigationController: UINavigationController
     ) {
         self.networkService = networkService

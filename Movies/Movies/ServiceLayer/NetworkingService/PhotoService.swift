@@ -17,7 +17,7 @@ protocol PhotoLoaderProtocol {
     )
 }
 
-final class PhotoLoader: PhotoLoaderProtocol {
+final class PhotoService: PhotoLoaderProtocol {
     private var images: [String: UIImage] = [:]
     private let cacheLifetime: TimeInterval = 60 * 60 * 24 * 7
 
@@ -37,7 +37,7 @@ final class PhotoLoader: PhotoLoaderProtocol {
         guard let cachDir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
         else { return nil }
         let hashName = String(describing: path.hashValue)
-        return cachDir.appendingPathComponent(PhotoLoader.pathName + "/" + hashName).path
+        return cachDir.appendingPathComponent(PhotoService.pathName + "/" + hashName).path
     }
 
     private func saveImageToCache(path: String, image: UIImage) {

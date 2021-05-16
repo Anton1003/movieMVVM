@@ -6,7 +6,7 @@
 //
 
 import UIKit
-///
+
 final class MoviesTableViewController: UITableViewController {
     var viewModel: MoviesTableViewModel!
 

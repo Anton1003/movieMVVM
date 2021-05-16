@@ -16,8 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         let networkService = NetworkingService()
-        let photoLoader = PhotoLoader()
-        let coreDataManager = CoreDataManager()
+        let photoLoader = PhotoService()
+        let coreDataManager = CoreDataService()
         let navigationController = UINavigationController()
         let moduleBuilder = ModuleBuilder(
             networkService: networkService,

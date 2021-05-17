@@ -24,11 +24,11 @@ final class MovieTableCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func update(with viewModel: MoviesCellViewModel) {
-        titleLabel.text = viewModel.titleLabel
-        summaryLabel.text = viewModel.summaryLabel
-        ratingLabel.text = "\(viewModel.ratingLabel)"
-        categoriesLabel.text = "\(viewModel.categoriesLabel)"
+    func update(with viewModel: Movies) {
+        titleLabel.text = viewModel.title
+        summaryLabel.text = viewModel.releaseDate
+        ratingLabel.text = "\(viewModel.popularity)"
+        categoriesLabel.text = "\(viewModel.voteAverage)"
         posterImageView.image = nil
         if cacheDictionary[viewModel.posterPath] != nil {
             posterImageView.image = UIImage(data: cacheDictionary[viewModel.posterPath] ?? Data())

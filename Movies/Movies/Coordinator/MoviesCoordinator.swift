@@ -30,7 +30,7 @@ final class MoviesCoordinator: Coordinator {
         navigationController.setViewControllers([moviesTableViewController], animated: false)
     }
 
-    func showDetail() {
+    func showDetail(for movie: Movies?) {
         let detailCoordinator = DetailCoordinator(navigationController: navigationController, builder: moduleBulder)
         childCoordinators.append(detailCoordinator)
         detailCoordinator.start()

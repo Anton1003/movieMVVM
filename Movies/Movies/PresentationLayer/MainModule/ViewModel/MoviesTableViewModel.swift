@@ -8,16 +8,17 @@
 import UIKit
 
 final class MoviesTableViewModel {
-    enum Cell {
-        case moviesCell(MoviesCellViewModel)
-    }
+//    enum Cell {
+//        case moviesCell(MoviesCellViewModel)
+//    }
 
     var onUpdate: () -> () = {}
-    var coordinator: MoviesCoordinator?
-    var networkingService: NetworkingService?
+    var coordinator: MoviesCoordinator
+    var networkingService: NetworkingService
     var title = "Movies"
 
-    private(set) var cells: [MoviesTableViewModel.Cell] = []
+//    private(set) var cells: [MoviesTableViewModel.Cell] = []
+    var movies: [Movies]?
 
     init(coordinator: MoviesCoordinator, networkingService: NetworkingService) {
         self.coordinator = coordinator
@@ -25,31 +26,31 @@ final class MoviesTableViewModel {
     }
 
     func viewLoader() {
-        guard let networkingService = networkingService else { return }
         networkingService.loadMovies { moviesArray in
-            moviesArray.results.forEach {
-                let cell = MoviesCellViewModel(
-                    titleLabel: $0.title,
-                    summaryLabel: $0.releaseDate,
-                    ratingLabel: $0.popularity,
-                    categoriesLabel: $0.voteAverage,
-                    posterPath: $0.posterPath
-                )
-                self.cells.append(.moviesCell(cell))
-            }
+            self.movies = moviesArray.results
+//            moviesArray.results.forEach {
+//                let cell = MoviesCellViewModel(
+//                    titleLabel: $0.title,
+//                    summaryLabel: $0.releaseDate,
+//                    ratingLabel: $0.popularity,
+//                    categoriesLabel: $0.voteAverage,
+//                    posterPath: $0.posterPath
+//                )
+//                self.cells.append(.moviesCell(cell))
             self.onUpdate()
         }
     }
 
-    func showDetail() {
-        coordinator?.showDetail()
+    func showDetail(for indexPath: IndexPath) {
+        coordinator.showDetail(for: movies?[indexPath.row])
     }
 
     func numberOfRous() -> Int {
-        cells.count
+        movies?.count ?? 0
     }
 
-    func cell(for indexPath: IndexPath) -> Cell {
-        cells[indexPath.row]
-    }
+//
+//    func cell(for indexPath: IndexPath) {
+//        movies?[indexPath.row]
+//    }
 }

@@ -25,22 +25,22 @@ final class MoviesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellViewModel = viewModel.cell(for: indexPath)
-        switch cellViewModel {
-        case let .moviesCell(moviesCellViewModel):
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "movieCell",
-                for: indexPath
-            ) as? MovieTableCell
-            else { return UITableViewCell() }
-            cell.update(with: moviesCellViewModel)
-            return cell
-        }
+//        let cellViewModel = viewModel.cell(for: indexPath)
+//        switch cellViewModel {
+//        case let .moviesCell(moviesCellViewModel):
+        guard let movie = viewModel?.movies?[indexPath.row],
+              let cell = tableView.dequeueReusableCell(
+                  withIdentifier: "movieCell",
+                  for: indexPath
+              ) as? MovieTableCell
+        else { return UITableViewCell() }
+        cell.update(with: movie)
+        return cell
     }
 
     // MARK: - Table view delegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.showDetail()
+        viewModel.showDetail(for: indexPath)
     }
 }
